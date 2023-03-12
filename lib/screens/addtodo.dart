@@ -14,30 +14,30 @@ class AddToDo extends StatelessWidget {
         title: const Text("Add New ToDo")
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //text form field -> for more text fields
-            //on change
-            TextField(
-              //onChanged: ,
-              decoration: InputDecoration(
-                hintText: "Add your todo here",
-                  border: const OutlineInputBorder(),
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      textController.clear();
-                    },
-                    icon: const Icon(Icons.clear),
-                )
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //text form field -> for more text fields
+              //on change
+              TextField(
+                //onChanged
+                decoration: InputDecoration(
+                  hintText: "Add your todo here",
+                    border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        textController.clear();
+                      },
+                      icon: const Icon(Icons.clear),
+                  )
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            const Button(),
-          ],
+              const SizedBox(height: 20),
+              const Button(),
+            ],
+          ),
         ),
-      )
       );
   }
 }

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class TodoWidget extends StatelessWidget {
-  const TodoWidget({Key? key}) : super(key: key);
+
+  final String title;
+
+  const TodoWidget({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
       child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
         decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(10),
@@ -20,12 +24,12 @@ class TodoWidget extends StatelessWidget {
             )
           ]
         ),
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+        padding: const EdgeInsets.all(20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text("Eat food", style: TextStyle(fontSize: 20, color: Colors.white),),
-            Icon(Icons.delete, color: Colors.white,)
+          children: [
+            Text(title, style: const TextStyle(fontSize: 20, color: Colors.white),),
+            const Icon(Icons.delete, color: Colors.white,)
           ],
         ),
       ),
