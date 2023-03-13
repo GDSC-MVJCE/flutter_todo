@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/models/todo.dart';
 
 class TodoWidget extends StatefulWidget {
   final int index;
-  final String title;
+  final Todo todo;
   final Function removeTodo;
 
   const TodoWidget({
     Key? key,
-    required this.title,
+    required this.todo,
     required this.index,
     required this.removeTodo,
   }) : super(key: key);
@@ -38,7 +39,7 @@ class _TodoWidgetState extends State<TodoWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            widget.title,
+            widget.todo.title,
             style: const TextStyle(fontSize: 20, color: Colors.white),
           ),
           IconButton(

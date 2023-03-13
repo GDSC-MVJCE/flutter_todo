@@ -1,4 +1,9 @@
 class Todo {
-  late final String title;
-  Todo({required this.title});
+  String id;
+  String title;
+
+  Todo({
+    required this.id,
+    required this.title,
+  });
 }
