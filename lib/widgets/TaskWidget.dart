@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/utils/db.dart';
+
+import '../models/todo.dart';
 
 class TodoWidget extends StatefulWidget {
-  final int index;
-  final String title;
-  final Function removeTodo;
+  final Todo todo;
 
   const TodoWidget({
     Key? key,
-    required this.title,
-    required this.index,
-    required this.removeTodo,
+    required this.todo,
   }) : super(key: key);
 
   @override
@@ -38,11 +37,12 @@ class _TodoWidgetState extends State<TodoWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            widget.title,
+            widget.todo.title,
             style: const TextStyle(fontSize: 20, color: Colors.white),
           ),
           IconButton(
-            onPressed: () => widget.removeTodo(widget.index),
+            onPressed: () async =>
+                await db.collection("todos").doc(widget.todo.id).delete(),
             icon: const Icon(
               Icons.delete,
               color: Colors.white,

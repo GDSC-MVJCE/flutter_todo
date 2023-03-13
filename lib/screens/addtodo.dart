@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/models/todo.dart';
+
+import '../utils/db.dart';
 
 class AddToDo extends StatefulWidget {
   const AddToDo({Key? key}) : super(key: key);
@@ -40,8 +41,12 @@ class _AddToDoState extends State<AddToDo> {
             ElevatedButton(
               onPressed: () {
                 if (todo != null) {
-                  Todo newTodo = Todo(title: todo!);
-                  Navigator.of(context).pop(newTodo);
+                  final todoJson = <String, dynamic>{"title": todo};
+
+                  db.collection("todos").add(todoJson).then((doc) {
+                    debugPrint('DocumentSnapshot added with ID: ${doc.id}');
+                    Navigator.of(context).pop();
+                  });
                 }
               },
               child: const Text("Submit"),
